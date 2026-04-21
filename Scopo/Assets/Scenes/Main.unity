@@ -798,10 +798,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 468702147493429693, guid: 4d079004cc8d3473fadee837c39d1f58, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 468702147493429693, guid: 4d079004cc8d3473fadee837c39d1f58, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 2601827519944178381, guid: 4d079004cc8d3473fadee837c39d1f58, type: 3}
       propertyPath: m_Name
       value: Game Menu
       objectReference: {fileID: 0}
+    - target: {fileID: 4025649726556296709, guid: 4d079004cc8d3473fadee837c39d1f58, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4025649726556296709, guid: 4d079004cc8d3473fadee837c39d1f58, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 5340807181530443474, guid: 4d079004cc8d3473fadee837c39d1f58, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 5340807181530443474, guid: 4d079004cc8d3473fadee837c39d1f58, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 5532616692849793649, guid: 4d079004cc8d3473fadee837c39d1f58, type: 3}
       propertyPath: m_Pivot.x
       value: 0
