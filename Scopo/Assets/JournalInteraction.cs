@@ -2,25 +2,37 @@ using UnityEngine;
 
 public class JournalInteraction : MonoBehaviour
 {
-    [Header("Réglages")]
-    public float distanceRegard = 5f; // Distance à laquelle le joueur peut déclencher l'anim
-    public string nomDuParametre = "IsLooking"; // Le nom exact dans ton Animator
-    public string tagDuPNJ = "PNJ"; // Le tag que tu as mis sur ton bonhomme
+    [Header("Interaction")]
+    public float distanceRegard = 5f;
+    public string nomDuParametre = "IsLooking";
+    public string tagDuPNJ = "PNJ";
 
     private Animator animatorActuel;
 
+    // Reference to the separate CameraShake script
+    private CameraShake cameraShake;
+
+    // Prevents shaking every frame
+    private bool alreadyTriggered = false;
+
+    void Start()
+    {
+        cameraShake = Camera.main.GetComponent<CameraShake>();
+    }
+
     void Update()
     {
-        // On crée un rayon qui part du centre de la caméra
-        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        Ray ray = Camera.main.ViewportPointToRay(
+            new Vector3(0.5f, 0.5f, 0));
+
         RaycastHit hit;
 
-        // On dessine le rayon dans la fenêtre Scene pour t'aider (visible uniquement en mode Edit/Scene)
-        Debug.DrawRay(ray.origin, ray.direction * distanceRegard, Color.red);
+        Debug.DrawRay(ray.origin,
+                      ray.direction * distanceRegard,
+                      Color.red);
 
         if (Physics.Raycast(ray, out hit, distanceRegard))
         {
-            // Est-ce qu'on touche un objet avec le bon Tag ?
             if (hit.collider.CompareTag(tagDuPNJ))
             {
                 Animator anim = hit.collider.GetComponent<Animator>();
@@ -29,6 +41,8 @@ public class JournalInteraction : MonoBehaviour
                 {
                     anim.SetBool(nomDuParametre, true);
                     animatorActuel = anim;
+
+                    cameraShake.Shake(2f, 0.2f);
                 }
             }
             else
@@ -49,5 +63,7 @@ public class JournalInteraction : MonoBehaviour
             animatorActuel.SetBool(nomDuParametre, false);
             animatorActuel = null;
         }
+
+        alreadyTriggered = false;
     }
 }
