@@ -14,17 +14,19 @@ using NarrationsJouables;
         [SerializeField] private float minDistance = 0f;
         [SerializeField] private float maxDistance = 3f;
 
-    [SerializeField] private float shakeIntensity = 2f;
-    [SerializeField] private float shakeDuration = 1f;
+        [SerializeField] private float shakeIntensity = 2f;
+        [SerializeField] private float shakeDuration = 1f;
 
-    private bool isObserved;
+        private bool isObserved;
 
         [Header("Camera Shake Settings")]
         private CinemachineCamera virtualCamera;
         private CinemachineBasicMultiChannelPerlin noise;
         private float shakeTimer;
 
-        private void Start()
+        private bool hasBeenInvoked =false; // To prevent multiple invocations of the shake
+
+    private void Start()
         {
             if (highlight != null) highlight.SetActive(false);
 
@@ -57,7 +59,11 @@ using NarrationsJouables;
 
         public bool ObservationStateChanged(bool _observed, float _distance = -1)
         {
-            var valid = !useMinMax || _distance > minDistance && _distance < maxDistance;
+
+         // Prevent interaction from happening more than once
+         if (hasBeenInvoked)
+            return false;
+        var valid = !useMinMax || _distance > minDistance && _distance < maxDistance;
             var state = _observed && valid;
 
             // if state changed
@@ -67,6 +73,7 @@ using NarrationsJouables;
 
                 if (isObserved)
                 {
+                    hasBeenInvoked = true; // Set the flag to true to prevent future invocations
                     OnGazeEnter?.Invoke();
 
                     // Trigger the shake directly right here
