@@ -3,6 +3,11 @@ Scopo is a game powered by Unity. It's a walking simulator that gives you the st
 
 This project has been done for the HUM-322 course at EPFL.
 
+## Run the game
+You can download the last build release [here](https://github.com/HUM322-Spica/Spica/releases)
+1. Unzip it
+2. Run `Scopo.exe`
+
 ## Creators
 | Name                  | GitHub                                           |
 |-----------------------|--------------------------------------------------|
